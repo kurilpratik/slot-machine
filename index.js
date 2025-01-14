@@ -26,5 +26,20 @@ const deposit = () => {
     }
 }
 
+
+const getNumberOfLines = () => {
+    while(true){
+        const numberOfLines = parseInt(prompt("Enter number of lines to bet on (1-3): "));
+        if(isNaN(numberOfLines)){
+            console.log("Kindly enter a valid number, try again.");
+        }
+        else if(numberOfLines <= 0 || numberOfLines > 3){
+            console.log("Number of lines must be between 1 and 3, try again.");
+        } else {
+            return numberOfLines;
+        }
+    }
+}
+
 const depositAmount = deposit();
-console.log(depositAmount);
+const numberOfLines = getNumberOfLines();
