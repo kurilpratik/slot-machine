@@ -1,5 +1,5 @@
 {
-  "name": "y",
+  "name": "slot-machine",
   "version": "1.0.0",
   "description": "A terminal based slot machine written in JS",
   "main": "y",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kurilpratik/slot-machine/issues"
   },
-  "homepage": "https://github.com/kurilpratik/slot-machine#readme"
+  "homepage": "https://github.com/kurilpratik/slot-machine#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
 }
