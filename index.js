@@ -18,7 +18,7 @@ const deposit = () => {
             console.log("Kindly enter a valid number, try again.");
         }
         else if(depositAmount <= 0){
-            console.log("Deposit amoutn must be greater than 0, try again");
+            console.log("Deposit amount must be greater than 0, try again");
         }
         else {
             return depositAmount;
@@ -41,5 +41,30 @@ const getNumberOfLines = () => {
     }
 }
 
-const depositAmount = deposit();
+let balance = deposit();
 const numberOfLines = getNumberOfLines();
+
+// Say bet = 10
+// totalBet = 10 * 2 = 20
+// totalBet < balance
+// 10 * 2 < balance
+// 10 < bal / 2
+// i.e bet < balance / lines
+// so if bet > balance / lines -> invalid
+
+const getBet = (balance, lines) => {
+    while(true){
+        const bet = parseInt(prompt("Enter the bet per line: "));
+        if(isNaN(bet)){
+            console.log("Kindly enter a valid number, try again.");
+        }
+        else if(bet <= 0 || bet > balance/lines){
+            console.log(`Bet amount must be greather than 0 and less than or equal to ${balance}, try again.`);
+            console.log("Your bet amount is "+ bet * lines);
+        } else {
+            return bet;
+        }
+    }
+}
+
+const bet = getBet(balance, numberOfLines);
