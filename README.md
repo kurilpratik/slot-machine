@@ -25,4 +25,4 @@ const reelSymbols = [...symbols];
 - transposing a matrix
 
 ## Extensions
-- [ ] Add winnings and bet losses to balance
+- [x] Add winnings and bet losses to balance
