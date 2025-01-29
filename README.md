@@ -1,9 +1,13 @@
 ## Slot-Machine
-A terminal based slot machine written in JS
+### A terminal based slot machine written in JS
 
-|A|A|A| * 1.5<br>
-|B|B|A| * 5.0<br>
-|C|C|A| * 1.5<br>
+Example:
+<br>
+A | A | A = A  => *1.5<br>
+B | B | A <br>
+C | C | A <br>
+
+Here A has a mulitplier of 1.5
 
 ## Learnings
 - Looping through an Object using Object.entries and accessing its key-value pair

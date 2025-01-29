@@ -153,10 +153,31 @@ const printRows = (rows) => {
     }
 }
 
+const getWinnings = (rows, bet, lines) => {
+    let winnings = 0;
+    // If lines is 1 we only need to look at index 0, if lines = 2, index = 0 and 1 ...
+    for (let row=0; row<lines; row++) {
+        const symbols = rows[row]; // Store all symbols of a row
+        let allSame = true;
+        for (const symbol of symbols) {
+            if (symbol != symbols[0]) {
+                allSame = false;
+                break;
+            }
+        }
+
+        if(allSame) {
+            winnings += bet*SYMBOL_VALUES(symbols[0]) // using this to find out multiplier, eg pass A gives 5
+        }
+    }
+    return winnings;
+}
+
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
 const bet = getBet(balance, numberOfLines);
 const reels = spin();
-//printRows(reels);
-const rows = transpose(reels);
-printRows(rows);
+const matrix = transpose(reels);
+printRows(matrix);
+const winnings = getWinnings(matrix, bet, numberOfLines);
+console.log(winnings);
