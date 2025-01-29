@@ -10,6 +10,25 @@
 
 const prompt = require('prompt-sync')();
 
+const ROWS = 3;
+const COLS = 3;
+
+// item distribution
+const SYMBOLS_COUNT = {
+    "A":2, 
+    "B":4, // entry
+    "C":6,
+    "D":8
+};
+
+// item value
+const SYMBOL_VALUES = {
+    "A":5,
+    "B":4,
+    "C":3,
+    "D":2
+}
+
 const deposit = () => {
     while(true){
         const depositAmount = parseFloat(prompt("Enter a deposit amount: "));
@@ -41,8 +60,6 @@ const getNumberOfLines = () => {
     }
 }
 
-let balance = deposit();
-const numberOfLines = getNumberOfLines();
 
 // Say bet = 10
 // totalBet = 10 * 2 = 20
@@ -67,4 +84,33 @@ const getBet = (balance, lines) => {
     }
 }
 
+
+const spin = () => {
+    const symbols = []; // Array is a reference data type, meaning we can change what is inside of it w/o changing the reference to it. Hence, we can edit an array even though it is a const
+    for ( const [symbol, count] of Object.entries(SYMBOLS_COUNT)) {
+        for (let i=0; i<count; i++) {
+            symbols.push(symbol);
+        }
+    }
+    // console.log(symbols);
+    const reels = [[],[],[]];
+    
+    // Add a random reelSymbols from symbols to the reel and then pop it from reelSymbols so we can't reuse it
+    for (let i=0; i<COLS; i++) {
+        const reelSymbols = [...symbols]; // Copying symbols into reelSymbols
+        for (let j=0; j<ROWS; j++) {
+            const randomIndex = Math.floor(Math.random() * reelSymbols.length);
+            const selectedSymbol = reelSymbols[randomIndex];
+            reels[i].push(selectedSymbol);
+            reelSymbols.splice(randomIndex,1); // 1 removes just 1 element
+        }
+    }
+
+    return reels;
+}
+
+let balance = deposit();
+const numberOfLines = getNumberOfLines();
 const bet = getBet(balance, numberOfLines);
+const reels = spin();
+console.log(reels);
