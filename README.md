@@ -2,7 +2,7 @@
 ### A terminal based slot machine written in JS
 
 Example:
-<br><br>
+<br>
 D | D | D <br>
 B | B | A <br>
 C | C | A <br>
@@ -25,4 +25,4 @@ const reelSymbols = [...symbols];
 - transposing a matrix
 
 ## Extensions
-` [ ] Add winnings and bet losses to balance
+- [ ] Add winnings and bet losses to balance
